@@ -1,15 +1,16 @@
 package com.example.login.dao;
 import com.example.login.model.Users;
 import com.example.login.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
+@RequiredArgsConstructor
 public class UserDao {
 
-    @Autowired
+    private final
     UserRepository userRepository;
 
     public Users getUserByName(String name) {

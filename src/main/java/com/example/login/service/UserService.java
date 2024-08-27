@@ -17,8 +17,8 @@ import com.example.login.utils.GenerateJWTToken;
 import com.example.login.utils.Utility;
 import com.example.login.vo.LoginVO;
 import com.example.login.vo.UsersVO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -32,19 +32,20 @@ import java.util.UUID;
 @org.springframework.stereotype.Service
 @Transactional(rollbackOn = Exception.class)
 @Slf4j
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserDao userDao;
 
-    @Autowired
-    private RoleDao roleDao;
+    private final UserDao userDao;
 
 
-    @Autowired EmailService emailService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
+    private final RoleDao roleDao;
+
+
+    private final EmailService emailService;
+
+    private final  PasswordEncoder passwordEncoder;
+    private final
     GenerateJWTToken generateJWTToken;
     @Value("${access.token.expiry.minutes}")
     private long accessTokenExpiry;
@@ -138,7 +139,7 @@ public class UserService {
             users.setRefreshToken(refreshToken);
             userDao.saveUser(users);
             log.info("User login successfully, Username: {}", loginRequest.getUsername());
-            return UserMapper.createLoginVO(accessToken, refreshToken, users);
+            return UserMapper.createLoginVO(accessToken, refreshToken);
         } catch (Exception e) {
             log.error("Error while login, userName: {}", loginRequest.getUsername());
             throw e;
@@ -179,7 +180,7 @@ public class UserService {
             log.info("User token successfully refreshed, userId: {}", userId);
             existingUser.setRefreshToken(refreshToken);
             userDao.saveUser(existingUser);
-            return UserMapper.createLoginVO(accessToken, refreshToken, existingUser);
+            return UserMapper.createLoginVO(accessToken, refreshToken);
         } catch (Exception e) {
             log.error("Error while refresh token, userId: {}", userIdFromToken);
             throw e;

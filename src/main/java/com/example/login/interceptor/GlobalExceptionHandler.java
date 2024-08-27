@@ -34,6 +34,7 @@ public class GlobalExceptionHandler {
         ResponseVO<Object> response = new ResponseVO<>();
         response.setMessage(error);
         response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setError(errorVO);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler(DataIntegrityViolationException.class)
@@ -46,6 +47,7 @@ public class GlobalExceptionHandler {
         ResponseVO<Object> response = new ResponseVO<>();
         response.setMessage(error);
         response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setError(errorVO);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
     public static byte[] getUnauthorizedResponseForAuthFilterErrors(Exception exception) {
@@ -106,6 +108,7 @@ public class GlobalExceptionHandler {
         ResponseVO<Object> response = new ResponseVO<>();
         response.setMessage(error);
         response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setError(errorVO);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
     private void logError(HttpServletRequest request, Exception exception) {
