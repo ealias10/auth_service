@@ -11,10 +11,9 @@ import lombok.*;
 @Builder
 public class LoginVO {
 
-    @JsonProperty(value = "access_token")
-    private String accessToken;
+  @JsonProperty(value = "access_token")
+  private String accessToken;
 
-    @JsonProperty(value = "refresh_token")
-    private String refreshToken;
-
+  @JsonProperty(value = "refresh_token")
+  private String refreshToken;
 }

@@ -1,8 +1,7 @@
 package com.example.login.model;
 
-import lombok.*;
-
 import java.io.Serializable;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,6 +11,6 @@ import java.io.Serializable;
 @Builder
 public class OtpInfo implements Serializable {
 
-    private String otp;
-    private Long expiry;
+  private String otp;
+  private Long expiry;
 }
