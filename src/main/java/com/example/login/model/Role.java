@@ -15,14 +15,12 @@ import org.hibernate.annotations.GenericGenerator;
 @Builder
 public class Role extends Audit {
 
-    @Id
-    @Column(name = "id", updatable = false, nullable = false)
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private UUID id;
+  @Id
+  @Column(name = "id", updatable = false, nullable = false)
+  @GeneratedValue(generator = "system-uuid")
+  @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+  private UUID id;
 
-    @Column(name = "name", unique = true)
-    private String name;
-
-
+  @Column(name = "name", unique = true)
+  private String name;
 }

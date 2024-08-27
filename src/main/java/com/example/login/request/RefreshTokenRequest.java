@@ -1,9 +1,8 @@
 package com.example.login.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-
 import javax.validation.constraints.NotEmpty;
+import lombok.*;
 
 @Getter
 @Setter
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 public class RefreshTokenRequest {
 
-    @NotEmpty
-    @JsonProperty("refresh_token")
-    private String refreshToken;
+  @NotEmpty
+  @JsonProperty("refresh_token")
+  private String refreshToken;
 }
