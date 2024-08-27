@@ -9,6 +9,7 @@ import com.example.login.service.UserService;
 import com.example.login.vo.LoginVO;
 import com.example.login.vo.ResponseVO;
 import com.example.login.vo.UsersVO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +23,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 @Validated
+@RequiredArgsConstructor
 @RequestMapping("/user")
 
 public class UserController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseVO<Object>> createUser(

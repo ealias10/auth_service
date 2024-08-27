@@ -25,7 +25,7 @@ public class UserMapper {
                 .build();
     }
 
-    public static LoginVO createLoginVO(String accessToken, String refreshToken, Users users) {
+    public static LoginVO createLoginVO(String accessToken, String refreshToken) {
         return LoginVO.builder()
                 .refreshToken(refreshToken)
                 .accessToken(accessToken)
